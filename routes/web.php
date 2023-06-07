@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,23 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/logout', [LogoutController::class, 'signOut'])->name('sign.out');
+ });
+  
+
+Route::middleware(['auth', 'user-access:user'])->group(function () {
+    Route::get('/home', [HomeController::class, 'userHome'])->name('user.home');
+});
+
+Route::middleware(['auth', 'user-access:artist'])->group(function () {
+  
+    Route::get('/artist/home', [HomeController::class, 'artistHome'])->name('artist.home');
+});
+
+Route::middleware(['auth', 'user-access:admin'])->group(function () {
+  
+    Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
 });
