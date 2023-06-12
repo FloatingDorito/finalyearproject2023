@@ -9,7 +9,7 @@
 
             {{-- begin::Dashboard --}}
             <div class="menu-item">
-                <a class="menu-link {{ Route::is('admin.home') ? 'active' : null }}" href="{{ route('admin.home') }}">
+                <a class="menu-link {{ Route::is('artist.home') ? 'active' : null }}" href="{{ route('artist.home', ['username' => auth()->user()->username]) }}">
                     <span class="menu-icon">
                         <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2023-06-08-055059/core/html/src/media/icons/duotune/general/gen008.svg-->
                         <span class="svg-icon svg-icon svg-icon-2"><svg width="24" height="24"
@@ -37,11 +37,11 @@
 
             <div class="menu-item">
                 <div class="menu-content pt-8 pb-2">
-                    <span class="menu-section text-muted text-uppercase fs-8 ls-1">Admin Panell</span>
+                    <span class="menu-section text-muted text-uppercase fs-8 ls-1">Artist Panel</span>
                 </div>
             </div>
 
-            {{-- begin::Approvals --}}
+            {{-- begin::Artist Details --}}
             <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1 here show">
                 <span class="menu-link">
                     <span class="menu-icon">
@@ -62,18 +62,39 @@
                         </span>
                         <!--end::Svg Icon-->
                     </span>
-                    <span class="menu-title">Approvals</span>
+                    <span class="menu-title">Artist Details</span>
                     <span class="menu-arrow"></span>
                 </span>
-
-                {{-- Artist Approval --}}
+                {{-- Account Settings --}}
                 <div class="menu-sub menu-sub-accordion">
                     <div class="menu-item">
-                        <a class="menu-link @if (Route::is('admin.home')) active @endif" href="#">
+                        <a class="menu-link" href="#">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title">Artist Approval</span>
+                            <span class="menu-title">Account Settings</span>
+                        </a>
+                    </div>
+                </div>
+                {{-- Portfolio --}}
+                <div class="menu-sub menu-sub-accordion">
+                    <div class="menu-item">
+                        <a class="menu-link @if (Route::is('artist.home')) active @endif" href="#">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Portfolio</span>
+                        </a>
+                    </div>
+                </div>
+                {{-- Commissions --}}
+                <div class="menu-sub menu-sub-accordion">
+                    <div class="menu-item">
+                        <a class="menu-link" href="#">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Commissions</span>
                         </a>
                     </div>
                 </div>
