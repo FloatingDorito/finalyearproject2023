@@ -51,9 +51,9 @@ class LoginController extends Controller
             if (auth()->user()->type == 'admin') {
                 return redirect()->route('admin.home');
             } else if (auth()->user()->type == 'artist') {
-                return redirect()->route('artist.home');
+                return redirect()->route('artist.home', ['username' => auth()->user()->username]);
             } else {
-                return redirect()->route('home');
+                return redirect()->route('home', ['username' => auth()->user()->username]);
             }
         } else {
             return redirect()->back()->withErrors(['password' => 'Inavlid Password', 'email' => 'Invalid Email Address']);

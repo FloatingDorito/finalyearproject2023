@@ -22,12 +22,12 @@ Route::group(['middleware' => ['auth']], function() {
   
 
 Route::middleware(['auth', 'user-access:user'])->group(function () {
-    Route::get('/home', [HomeController::class, 'userHome'])->name('user.home');
+    Route::get('/home/{username}', [HomeController::class, 'userHome'])->name('user.home');
 });
 
 Route::middleware(['auth', 'user-access:artist'])->group(function () {
   
-    Route::get('/artist/home', [HomeController::class, 'artistHome'])->name('artist.home');
+    Route::get('/artist/{username}/home', [HomeController::class, 'artistHome'])->name('artist.home');
 });
 
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
