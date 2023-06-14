@@ -12,10 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('artists', function (Blueprint $table) {
-            $table->id();
-            $table->foreignUuid('artist_id');
-            $table->foreign('artist_id')->references('id')->on('users');
-            $table->longText('description');
+            $table->uuid('id')->primary();
+            $table->foreignUuid('user_id')->constrained('users');
+            $table->longText('description')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('status');

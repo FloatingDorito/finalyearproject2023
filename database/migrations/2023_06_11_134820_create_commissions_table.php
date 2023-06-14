@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('commissions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('artist_id');
-            $table->foreign('artist_id')->references('id')->on('artists');
+            $table->foreignUuid('artist_id')->constrained('artists');
             $table->string('imagecover');
             $table->string('title');
             $table->string('price');

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Livewire\Artist\Portfolio\PortfolioController;
+use App\Http\Livewire\Artist\Portfolio\ManagePortfolio;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,9 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
 });
 
 Route::middleware(['auth', 'user-access:artist'])->group(function () {
-  
+    Route::get('/artist/{username}/portfolio/list', PortfolioController::class)->name('artist.portfolio');
+    Route::get('/artist/{username}/portfolio/create', ManagePortfolio::class)->name('artist.create.portfolio');
+    Route::get('/artist/{username}/portfolio/edit/{portfolio:id?}', ManagePortfolio::class)->name('artist.edit.portfolio');
     Route::get('/artist/{username}/home', [HomeController::class, 'artistHome'])->name('artist.home');
 });
 

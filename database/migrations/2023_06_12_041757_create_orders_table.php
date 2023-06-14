@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('artist_id');
-            $table->foreign('artist_id')->references('id')->on('artists');
-            $table->foreignUuid('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignUuid('artist_id')->constrained('artists');
+            $table->foreignUuid('user_id')->constrained('users');
             $table->unsignedBigInteger('commissions_id');
             $table->foreign('commissions_id')->references('id')->on('commissions');            
             $table->string('status');

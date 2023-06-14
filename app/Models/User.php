@@ -16,6 +16,8 @@ class User extends Authenticatable
 
     public $incrementing = false;
 
+    protected $primaryKey = 'id';
+    protected $keyType = 'uuid';
 
     /**
      * The attributes that are mass assignable.
