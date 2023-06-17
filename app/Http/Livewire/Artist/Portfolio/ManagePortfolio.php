@@ -14,7 +14,7 @@ class ManagePortfolio extends Component
 {
     use WithFileUploads;
     public $image;
-    public $artist;
+    private $artist;
     public $username;
     public $portfolio;
     public $rules = ['image' => 'required|image|mimes:jpeg,png,svg,jpg,gif'];

@@ -90,7 +90,7 @@
                 {{-- Commissions --}}
                 <div class="menu-sub menu-sub-accordion">
                     <div class="menu-item">
-                        <a class="menu-link" href="#">
+                        <a class="menu-link @if (Route::is('artist.commission')) active @endif" href="{{route('artist.commission',['username' => auth()->user()->username])}}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>

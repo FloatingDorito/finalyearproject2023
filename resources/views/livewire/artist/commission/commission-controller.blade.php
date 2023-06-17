@@ -1,11 +1,11 @@
 <div>
-    @section('pageTitle', 'Portfolio')
+    @section('pageTitle', 'Commission')
     <div class="card shadow-sm">
         <div class="card-header">
-            <h3 class="card-title">{{ auth()->user()->username }} Portfolio</h3>
+            <h3 class="card-title">{{ auth()->user()->username }} Commission</h3>
             <div class="card-toolbar">
-                <a href="{{ route('artist.create.portfolio', ['username' => auth()->user()->username]) }}"
-                    class="btn btn-sm fw-bold btn-primary">Add Portfolio</a>
+                <a href="{{ route('artist.create.commission', ['username' => auth()->user()->username]) }}"
+                    class="btn btn-sm fw-bold btn-primary">Add Commission</a>
             </div>
         </div>
         <div class="card-body">
@@ -14,34 +14,36 @@
                     <thead>
                         <tr class="fw-bold fs-6 text-gray-800 text-center border-bottom border-gray-200">
                             <th>ID</th>
-                            <th>Image</th>
+                            <th>Cover Image</th>
+                            <th>Title</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if (count($portfolios) <= 0)
+                        @if (count($commissions) < 0)
                             <tr>
-                                <td class="fw-bold fs-6 text-center" colspan="3">
-                                    No Portfolio Display
+                                <td class="fw-bold fs-6 text-center" colspan="5">
+                                    No Commissions Display
                                 </td>
                             </tr>
                         @else
-                            @foreach ($portfolios as $portfolio)
+                            @foreach ($commissions as $commission)
                                 <tr>
                                     <td>
                                         <p class="text-center">
-                                            {{$portfolio->id}}
+                                            {{ $commission->id }}
                                         </p>
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-center">
-                                            <img src="{{ secure_asset('portfolio/'.$portfolio->filelocation) }}"
+                                            <img src="{{ secure_asset('portfolio/' . $commission->filelocation) }}"
                                                 width="250px" alt="$portfolio->filename">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-center">
-                                            <a href="{{ route('artist.edit.portfolio', ['username' => auth()->user()->username, 'portfolio' => $portfolio->id]) }}"
+                                            <a href="{{ route('artist.edit.commission', ['username' => auth()->user()->username, 'commission' => $commission->id]) }}"
                                                 class="btn btn-sm btn-icon btn-secondary me-3">
                                                 <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2023-06-08-055059/core/html/src/media/icons/duotune/general/gen055.svg-->
                                                 <span class="svg-icon svg-icon-5 m-0"><svg width="24" height="24"
@@ -83,7 +85,7 @@
                                 </tr>
                             @endforeach
                         @endif
-                            </tbody>
+                    </tbody>
                 </table>
             </div>
         </div>
