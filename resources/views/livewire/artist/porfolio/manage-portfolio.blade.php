@@ -24,11 +24,12 @@
                     </div>
                     <div>
                         @if ($image)
-                            <label class="col-form-label fw-bold mt-2">Photo Preview:</label>
+                            <label class="fw-bold mt-2">Photo Preview:</label>
+                            <br>
                             @if ($image instanceof \Livewire\TemporaryUploadedFile)
-                                <img class="img-fluid mt-2" src="{{ $image->temporaryUrl() }}">
+                                <img class="img-fluid mt-2" width="250px" src="{{ $image->temporaryUrl() }}">
                             @else
-                                <img class="img-fluid mt-2" src="{{secure_asset('portfolio/'.$image)}}">
+                                <img class="img-fluid mt-2" width="250px" src="{{secure_asset('portfolio/'.$image)}}">
                             @endif
                         @endif
                         @error('image')

@@ -16,6 +16,7 @@
                             <th>ID</th>
                             <th>Cover Image</th>
                             <th>Title</th>
+                            <th>Price</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -37,8 +38,27 @@
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-center">
-                                            <img src="{{ secure_asset('portfolio/' . $commission->filelocation) }}"
-                                                width="250px" alt="$portfolio->filename">
+                                            <img src="{{ secure_asset('commission/' . $commission->coverimage) }}"
+                                                width="250px" alt="{{ $commission->coverimage }}">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="text-center">
+                                            {{ $commission->title }}
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center">
+                                            RM {{ $commission->price }}
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-center">
+                                            @if ($commission->status == true)
+                                                <span class="badge badge-success">Active</span>
+                                            @else
+                                                <span class="badge badge-light">Inactive</span>
+                                            @endif
                                         </div>
                                     </td>
                                     <td>

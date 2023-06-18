@@ -14,12 +14,14 @@ return new class extends Migration
         Schema::create('commissions', function (Blueprint $table) {
             $table->id();
             $table->foreignUuid('artist_id')->constrained('artists');
-            $table->string('imagecover');
+            $table->string('coverimage');
             $table->string('title');
-            $table->string('price');
+            $table->integer('price');
             $table->longText('description');
-            $table->string('likes');
-            $table->string('dislikes');
+            $table->longText('expectations');
+            $table->longText('likes');
+            $table->longText('dislikes');
+            $table->boolean('status');
             $table->string('exampleimageone')->nullable();
             $table->string('exampleimagetwo')->nullable();
             $table->string('exampleimagethree')->nullable();

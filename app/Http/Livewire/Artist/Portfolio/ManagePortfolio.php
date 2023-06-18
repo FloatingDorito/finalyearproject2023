@@ -14,7 +14,7 @@ class ManagePortfolio extends Component
 {
     use WithFileUploads;
     public $image;
-    private $artist;
+    public $artist;
     public $username;
     public $portfolio;
     public $rules = ['image' => 'required|image|mimes:jpeg,png,svg,jpg,gif'];
@@ -46,7 +46,7 @@ class ManagePortfolio extends Component
             $font->color([255, 255, 255, 0.7]);
             $font->size(100);
             $font->align('center');
-            $font->valign('bottom');
+            $font->valign('middle');
         });
         $copyright->save('portfolio/'.$file_name);
 
