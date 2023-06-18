@@ -4,6 +4,7 @@
 /public/hot
 /public/storage
 /public/portfolio
+/public/commission
 /storage/*.key
 /vendor
 .env
