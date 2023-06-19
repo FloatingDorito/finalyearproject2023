@@ -7,6 +7,7 @@ use App\Http\Livewire\Artist\Portfolio\PortfolioController;
 use App\Http\Livewire\Artist\Portfolio\ManagePortfolio;
 use App\Http\Livewire\Artist\Commission\CommissionController;
 use App\Http\Livewire\Artist\Commission\ManageCommission;
+use App\Http\Livewire\Artist\ArtistDashboard;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,7 +36,7 @@ Route::middleware(['auth', 'user-access:artist'])->group(function () {
     Route::get('/artist/{username}/commission/list', CommissionController::class)->name('artist.commission');
     Route::get('/artist/{username}/commission/create', ManageCommission::class)->name('artist.create.commission');
     Route::get('/artist/{username}/commission/edit/{commission:id?}', ManageCommission::class)->name('artist.edit.commission');
-    Route::get('/artist/{username}/home', [HomeController::class, 'artistHome'])->name('artist.home');
+    Route::get('/artist/{username}/home', ArtistDashboard::class)->name('artist.home');
 });
 
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
