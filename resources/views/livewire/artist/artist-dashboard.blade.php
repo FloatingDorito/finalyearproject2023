@@ -47,14 +47,14 @@
                             <div class="d-flex flex-wrap fw-bold fs-6 mb-2">
                                 @if ($artist->twitter)
                                     <a href="{{ $artist->twitter }}"
-                                        class="d-flex align-items-center text-gray-400 text-hover-primary me-2">
+                                        class="d-flex align-items-center text-gray-400 text-hover-primary me-2" target="_blank">
                                         <i class="fa-brands fa-twitter"></i>
                                         &nbsp; Twitter
                                     </a>
                                 @endif
                                 @if ($artist->facebook)
                                     <a href="{{ $artist->facebook }}"
-                                        class="d-flex align-items-center text-gray-400 text-hover-primary">
+                                        class="d-flex align-items-center text-gray-400 text-hover-primary" target="_blank">
                                         <i class="fa-brands fa-facebook"></i>
                                         &nbsp; Facebook
                                     </a>
@@ -63,7 +63,7 @@
                             @if ($artist->description)
                                 <div class="d-flex flex-wrap fw-bold fs-6 mb-2 pe-2">
                                     <p class="d-flex align-items-center text-gray-400 mb-2">
-                                        Description
+                                        {{ $artist->description }}
                                     </p>
                                 </div>
                             @endif
@@ -127,9 +127,14 @@
                                 <div class="card-body d-flex flex-center flex-column py-9 px-6">
                                     <div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
                                         <img src="{{ secure_asset('commission/' . $commission->coverimage) }}"
-                                            alt="image">
+                                            alt="image">                                            
                                     </div>
-                                    <a href="#"
+                                    @if ($commission->status == true)
+                                                <span class="badge badge-success mt-2">Active</span>
+                                            @else
+                                                <span class="badge badge-light mt-2">Inactive</span>
+                                            @endif
+                                    <a href="{{route('artist.commission.view',['username' => auth()->user()->username , 'commission'=> $commission->id])}}"
                                         class="fs-4 text-gray-800 text-hover-primary fw-bold mb-0">{{ $commission->title }}</a>
                                     <!--begin::Info-->
                                     <div class="d-flex flex-center flex-wrap mb-5">
@@ -142,7 +147,7 @@
                                     </div>
                                     <!--end::Info-->
                                     <!--begin::Follow-->
-                                    <a href="javascript:void(0)" class="btn btn-sm btn-light-primary">
+                                    <a href="{{route('artist.commission.view',['username' => auth()->user()->username , 'commission'=> $commission->id])}}" class="btn btn-sm btn-light-primary">
                                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr012.svg-->
                                         <span class="svg-icon svg-icon-3">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"

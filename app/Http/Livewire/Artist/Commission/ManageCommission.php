@@ -25,34 +25,30 @@ class ManageCommission extends Component
 
     protected function rules()
     {
+        $rules = [
+            'commission.title' => ['required', 'string'],
+            'commission.price' => ['required', 'integer'],
+            'commission.description' => ['required', 'string'],
+            'commission.expectations' => ['required', 'string'],
+            'commission.likes' => ['required', 'string'],
+            'commission.dislikes' => ['required', 'string'],
+            'commission.status' => ['boolean']
+        ];
+
         if ($this->coverimage instanceof \Livewire\TemporaryUploadedFile) {
-            return [
-                'coverimage' => ['required', 'image', 'mimes:jpeg,png,svg,jpg,gif', 'max:5120'],
-                'commission.title' => ['required', 'string'],
-                'commission.price' => ['required', 'integer'],
-                'commission.description' => ['required', 'string'],
-                'commission.expectations' => ['required', 'string'],
-                'commission.likes' => ['required', 'string'],
-                'commission.dislikes' => ['required', 'string'],
-                'exampleimageone' => ['nullable', 'image', 'mimes:jpeg,png,svg,jpg,gif', 'max:5120'],
-                'exampleimagetwo' => ['nullable', 'image', 'mimes:jpeg,png,svg,jpg,gif', 'max:5120'],
-                'exampleimagethree' => ['nullable', 'image', 'mimes:jpeg,png,svg,jpg,gif', 'max:5120'],
-                'commission.status' => ['boolean']
-            ];
-        } else {
-            return [
-                'commission.title' => ['required', 'string'],
-                'commission.price' => ['required', 'integer'],
-                'commission.description' => ['required', 'string'],
-                'commission.expectations' => ['required', 'string'],
-                'commission.likes' => ['required', 'string'],
-                'commission.dislikes' => ['required', 'string'],
-                'exampleimageone' => ['nullable', 'image', 'mimes:jpeg,png,svg,jpg,gif', 'max:5120'],
-                'exampleimagetwo' => ['nullable', 'image', 'mimes:jpeg,png,svg,jpg,gif', 'max:5120'],
-                'exampleimagethree' => ['nullable', 'image', 'mimes:jpeg,png,svg,jpg,gif', 'max:5120'],
-                'commission.status' => ['boolean']
-            ];
+            $rules['coverimage'] = ['required', 'image', 'mimes:jpeg,png,svg,jpg,gif', 'max:5120'];
         }
+        if ($this->exampleimageone instanceof \Livewire\TemporaryUploadedFile) {
+            $rules['exampleimageone'] = ['nullable', 'image', 'mimes:jpeg,png,svg,jpg,gif', 'max:5120'];
+        }
+        if ($this->exampleimagetwo instanceof \Livewire\TemporaryUploadedFile) {
+            $rules['exampleimagetwo'] = ['nullable', 'image', 'mimes:jpeg,png,svg,jpg,gif', 'max:5120'];
+        }
+        if ($this->exampleimagethree instanceof \Livewire\TemporaryUploadedFile) {
+            $rules['exampleimagethree'] = ['nullable', 'image', 'mimes:jpeg,png,svg,jpg,gif', 'max:5120'];
+        }       
+
+        return $rules;
 
     }
 

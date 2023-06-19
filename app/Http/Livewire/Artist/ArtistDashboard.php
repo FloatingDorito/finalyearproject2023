@@ -19,7 +19,7 @@ class ArtistDashboard extends Component
         $user = User::where('username', $this->username)->first();
         $this->artist = Artist::where('user_id', $user->id)->first();
         $this->portfolios = Portfolio::where('artist_id', $this->artist->id)->get();
-        $this->commissions = Commission::where('artist_id', $this->artist->id)->get();
+        $this->commissions = Commission::where('artist_id',$this->artist->id)->get();
     }
     public function render()
     {
