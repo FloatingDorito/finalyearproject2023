@@ -125,9 +125,8 @@
                             <div class="card">
                                 <!--begin::Card body-->
                                 <div class="card-body d-flex flex-center flex-column py-9 px-6">
-                                    <div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-                                        <img src="{{ secure_asset('commission/' . $commission->coverimage) }}"
-                                            alt="image">                                            
+                                    <div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded image-160x"
+                                    style="background-image:url('{{ secure_asset('commission/' . $commission->coverimage) }}')">
                                     </div>
                                     @if ($commission->status == true)
                                                 <span class="badge badge-success mt-2">Active</span>

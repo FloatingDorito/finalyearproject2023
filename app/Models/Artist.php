@@ -23,4 +23,8 @@ class Artist extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function portfolio(){
+        return $this->belongsTo(Portfolio::class, 'artist_id');
+    }
 }

@@ -11,6 +11,7 @@ use App\Http\Livewire\Artist\ArtistDashboard;
 use App\Http\Livewire\Artist\Commission\ViewCommission;
 use App\Http\Livewire\Artist\ArtistSettings;
 use App\Http\Livewire\User\UserDashboard;
+use App\Http\Livewire\User\Artist\ArtistList;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +29,8 @@ Route::group(['middleware' => ['auth']], function() {
  });
 
 Route::middleware(['auth', 'user-access:user'])->group(function () {
-    Route::get('/home/{username}', UserDashboard::class)->name('user.home');
+    Route::get('/user/dashboard/{username}', UserDashboard::class)->name('user.home');
+    Route::get('/user/artists', ArtistList::class)->name('user.artists');
 });
 
 Route::middleware(['auth', 'user-access:artist'])->group(function () {
@@ -40,10 +42,10 @@ Route::middleware(['auth', 'user-access:artist'])->group(function () {
     Route::get('/artist/{username}/commission/create', ManageCommission::class)->name('artist.create.commission');
     Route::get('/artist/{username}/commission/edit/{commission:id?}', ManageCommission::class)->name('artist.edit.commission');
     Route::get('/artist/{username}/account/settings', ArtistSettings::class)->name('artist.edit.account');
-    Route::get('/artist/{username}/home', ArtistDashboard::class)->name('artist.home');
+    Route::get('/artist/{username}/dashboard', ArtistDashboard::class)->name('artist.home');
 });
 
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
   
-    Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
+    Route::get('/admin/dashboard', [HomeController::class, 'adminHome'])->name('admin.home');
 });
