@@ -12,6 +12,7 @@ use App\Http\Livewire\Artist\Commission\ViewCommission;
 use App\Http\Livewire\Artist\ArtistSettings;
 use App\Http\Livewire\User\UserDashboard;
 use App\Http\Livewire\User\Artist\ArtistList;
+use App\Http\Livewire\User\Commission\CommissionList;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,7 @@ Route::group(['middleware' => ['auth']], function() {
 Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/user/dashboard/{username}', UserDashboard::class)->name('user.home');
     Route::get('/user/artists', ArtistList::class)->name('user.artists');
+    Route::get('/user/commissions', CommissionList::class)->name('user.commissions');
 });
 
 Route::middleware(['auth', 'user-access:artist'])->group(function () {

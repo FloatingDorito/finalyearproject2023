@@ -90,6 +90,7 @@
     <div>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="portfolioTab" role="tabpanel">
+                @if (count($portfolios) > 0)
                 <div class="card mb-5 mb-xl-10">
                     <div class="card-body">
                         <div class="row">
@@ -116,8 +117,10 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
             <div class="tab-pane fade" id="commissionTab" role="tabpanel">
+                @if (count($commissions) > 0)
                 <div class="row">
                     @foreach ($commissions as $commission)
                         <div class="col-md-6 col-xxl-4">
@@ -134,18 +137,16 @@
                                                 <span class="badge badge-light mt-2">Inactive</span>
                                             @endif
                                     <a href="{{route('artist.commission.view',['username' => auth()->user()->username , 'commission'=> $commission->id])}}"
-                                        class="fs-4 text-gray-800 text-hover-primary fw-bold mb-0">{{ $commission->title }}</a>
-                                    <!--begin::Info-->
+                                        class="fs-4 text-gray-800 text-hover-primary text-center fw-bold mb-0">{{ $commission->title }}</a>
+                                    <!--begin::Price-->
                                     <div class="d-flex flex-center flex-wrap mb-5">
-                                        <!--begin::Stats-->
                                         <div class="border border-dashed rounded min-w-90px py-3 px-4 mx-2 mb-3">
                                             <div class="fs-6 fw-bold text-gray-700">MYR {{ $commission->price }}</div>
                                             <div class="fw-semibold text-center text-gray-400">{{__('Price')}}</div>
                                         </div>
-                                        <!--end::Stats-->
                                     </div>
-                                    <!--end::Info-->
-                                    <!--begin::Follow-->
+                                    <!--end::Price-->
+                                    <!--begin::View Details-->
                                     <a href="{{route('artist.commission.view',['username' => auth()->user()->username , 'commission'=> $commission->id])}}" class="btn btn-sm btn-light-primary">
                                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr012.svg-->
                                         <span class="svg-icon svg-icon-3">
@@ -161,7 +162,7 @@
                                         </span>
                                         <!--end::Svg Icon-->View Details
                                     </a>
-                                    <!--end::Follow-->
+                                    <!--end::View Details-->
                                 </div>
                                 <!--begin::Card body-->
                             </div>
@@ -169,6 +170,7 @@
                         </div>
                     @endforeach
                 </div>
+                @endif
             </div>
         </div>
     </div>

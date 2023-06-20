@@ -54,7 +54,7 @@
             </div>
 
             <div class="menu-item">
-                <a class="menu-link" href="#">
+                <a class="menu-link @if (Route::is('user.commissions')) active @endif" href="{{ route('user.commissions') }}">
                     <span class="menu-icon">
                         <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2023-06-08-055059/core/html/src/media/icons/duotune/general/gen006.svg-->
                         <span class="svg-icon svg-icon-2"><svg width="24" height="24" viewBox="0 0 24 24"
