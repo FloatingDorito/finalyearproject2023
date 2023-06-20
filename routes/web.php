@@ -10,6 +10,7 @@ use App\Http\Livewire\Artist\Commission\ManageCommission;
 use App\Http\Livewire\Artist\ArtistDashboard;
 use App\Http\Livewire\Artist\Commission\ViewCommission;
 use App\Http\Livewire\Artist\ArtistSettings;
+use App\Http\Livewire\User\UserDashboard;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,10 +26,9 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/logout', [LogoutController::class, 'signOut'])->name('sign.out');
  });
-  
 
 Route::middleware(['auth', 'user-access:user'])->group(function () {
-    Route::get('/home/{username}', [HomeController::class, 'userHome'])->name('user.home');
+    Route::get('/home/{username}', UserDashboard::class)->name('user.home');
 });
 
 Route::middleware(['auth', 'user-access:artist'])->group(function () {

@@ -21,15 +21,6 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function userHome()
-    {
-        return view('site.home');
-    }
-
-    public function artistHome()
-    {
-        return view('artist.home');
-    }
     public function adminHome()
     {
         return view('admin.home');
