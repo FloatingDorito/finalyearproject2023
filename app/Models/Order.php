@@ -28,6 +28,6 @@ class Order extends Model
     }
 
     public function commission(){
-        return $this->belongsTo(Commission::class, 'commission_id');
+        return $this->belongsTo(Commission::class, 'commissions_id');
     }
 }

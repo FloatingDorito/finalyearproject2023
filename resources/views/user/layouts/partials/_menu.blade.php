@@ -98,7 +98,7 @@
                 {{-- Unsuccess Payment --}}
                 <div class="menu-sub menu-sub-accordion">
                     <div class="menu-item">
-                        <a class="menu-link" href="#">
+                        <a class="menu-link @if (Route::is('user.commissions.unpaid.list')) active @endif" href="{{ route('user.commissions.unpaid.list', ['username' => auth()->user()->username]) }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
@@ -109,7 +109,7 @@
                 {{-- Waiting for Artist Approval --}}
                 <div class="menu-sub menu-sub-accordion">
                     <div class="menu-item">
-                        <a class="menu-link" href="#">
+                        <a class="menu-link @if (Route::is('user.commissions.paid.list')) active @endif" href="{{ route('user.commissions.paid.list', ['username' => auth()->user()->username]) }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>

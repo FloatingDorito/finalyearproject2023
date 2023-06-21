@@ -15,6 +15,8 @@ use App\Http\Livewire\User\Artist\ArtistList;
 use App\Http\Livewire\User\Commission\CommissionList;
 use App\Http\Livewire\User\Commission\CommissionPurchase;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Livewire\User\Commission\PaymentUnsuccess;
+use App\Http\Livewire\User\Commission\PaymentSuccess;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +38,8 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/user/{username}/artists', ArtistList::class)->name('user.artists');
     Route::get('/user/{username}/commissions', CommissionList::class)->name('user.commissions');
     Route::get('/user/{username}/commissions/view/{commission:id}', CommissionPurchase::class)->name('user.commissions.view');
+    Route::get('/user/{username}/commissions/unpaid', PaymentUnsuccess::class)->name('user.commissions.unpaid.list');
+    Route::get('/user/{username}/commissions/paid', PaymentSuccess::class)->name('user.commissions.paid.list');
     Route::get('/user/{username}/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
     Route::get('/user/{username}/checkout/unsuccess', [CheckoutController::class, 'unsuccess'])->name('checkout.unsuccess');
 });
