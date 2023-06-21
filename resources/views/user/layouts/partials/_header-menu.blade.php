@@ -14,12 +14,12 @@
             </a>
         </div>
         <div class="menu-item me-lg-1">
-            <a class="menu-link py-3 @if (Route::is('user.artists')) active @endif" href="{{ route('user.artists') }}">
+            <a class="menu-link py-3 @if (Route::is('user.artists')) active @endif" href="{{ route('user.artists', ['username' => auth()->user()->username]) }}">
                 <span class="menu-title">Artist</span>
             </a>
         </div>
         <div class="menu-item me-lg-1">
-            <a class="menu-link py-3 @if (Route::is('user.commissions')) active @endif" href="{{ route('user.commissions') }}">
+            <a class="menu-link py-3 @if (Route::is('user.commissions')) active @endif" href="{{ route('user.commissions', ['username' => auth()->user()->username]) }}">
                 <span class="menu-title">Commission</span>
             </a>
         </div>

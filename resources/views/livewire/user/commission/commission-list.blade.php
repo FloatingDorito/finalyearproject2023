@@ -10,20 +10,22 @@
                         <div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded image-160x"
                             style="background-image:url('{{ secure_asset('commission/' . $commission->coverimage) }}')">
                         </div>
-                        <a href="#"
+
+                        <a href="javascript:void(0)"
                             class="fs-4 text-gray-800 text-center text-hover-primary fw-bold mb-0">{{ $commission->title }}</a>
                         <!--begin::Info-->
                         <div class="d-flex flex-center flex-wrap mb-5">
-                            <!--begin::Stats-->
+                            <!--begin::Price-->
                             <div class="border border-dashed rounded min-w-90px py-3 px-4 mx-2 mb-3">
                                 <div class="fs-6 fw-bold text-gray-700">MYR {{ $commission->price }}</div>
                                 <div class="fw-semibold text-center text-gray-400">{{ __('Price') }}</div>
                             </div>
-                            <!--end::Stats-->
+                            <!--end::Price-->
                         </div>
                         <!--end::Info-->
                         <!--begin::View Details-->
-                        <a href="#" class="btn btn-sm btn-light-primary">
+                        <a href="{{route('user.commissions.view', ['username' => auth()->user()->username, 
+                        'commission' => $commission->id])}}" class="btn btn-sm btn-light-primary">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr012.svg-->
                             <span class="svg-icon svg-icon-3">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"

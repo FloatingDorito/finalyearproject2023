@@ -34,7 +34,7 @@
             </div>
 
             <div class="menu-item">
-                <a class="menu-link @if (Route::is('user.artists')) active @endif" href="{{route('user.artists')}}">
+                <a class="menu-link @if (Route::is('user.artists')) active @endif" href="{{route('user.artists', ['username' => auth()->user()->username])}}">
                     <span class="menu-icon">
                         <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2023-06-08-055059/core/html/src/media/icons/duotune/art/art003.svg-->
                         <span class="svg-icon svg-icon-2"><svg width="24" height="24" viewBox="0 0 24 24"
@@ -54,7 +54,7 @@
             </div>
 
             <div class="menu-item">
-                <a class="menu-link @if (Route::is('user.commissions')) active @endif" href="{{ route('user.commissions') }}">
+                <a class="menu-link @if (Route::is('user.commissions')) active @endif" href="{{ route('user.commissions', ['username' => auth()->user()->username]) }}">
                     <span class="menu-icon">
                         <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2023-06-08-055059/core/html/src/media/icons/duotune/general/gen006.svg-->
                         <span class="svg-icon svg-icon-2"><svg width="24" height="24" viewBox="0 0 24 24"
@@ -95,7 +95,18 @@
                     <span class="menu-title">Purchased Commissions</span>
                     <span class="menu-arrow"></span>
                 </span>
-                {{-- Ongoing Orders --}}
+                {{-- Unsuccess Payment --}}
+                <div class="menu-sub menu-sub-accordion">
+                    <div class="menu-item">
+                        <a class="menu-link" href="#">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Unsuccessful Commission Payment</span>
+                        </a>
+                    </div>
+                </div>
+                {{-- Waiting for Artist Approval --}}
                 <div class="menu-sub menu-sub-accordion">
                     <div class="menu-item">
                         <a class="menu-link" href="#">

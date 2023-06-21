@@ -3,10 +3,6 @@
     <div class="card shadow-sm">
         <div class="card-header">
             <h3 class="card-title">{{ $commission->title }}</h3>
-            <div class="card-toolbar">
-                <a href="{{ route('artist.edit.commission', ['username' => auth()->user()->username, 'commission' => $commission->id]) }}"
-                    class="btn btn-sm fw-bold btn-primary">Edit Commission</a>
-            </div>
         </div>
         <div class="card-body">
             <div class="row mb-2">
@@ -27,11 +23,29 @@
                 </div>
                 <div class="col-12 col-md-8 col-lg-9">
                     <h2 class="fw-bold mt-3 mt-md-0 mb-3">{{ $commission->title }}</h2>
+                    <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary my-5"
+                        target="_blank">
+                        <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2023-06-08-055059/core/html/src/media/icons/duotune/communication/com013.svg-->
+                        <span class="svg-icon svg-icon-muted svg-icon-2hx"><svg width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
+                                    fill="currentColor" />
+                                <rect opacity="0.3" x="8" y="3" width="8" height="8"
+                                    rx="4" fill="currentColor" />
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                        &nbsp; {{ $commission->artist->user->username }}
+                    </a>
                     <div class="col-6">
                         <div class="border border-dashed rounded py-3 px-4 mx-2 mb-3">
                             <div class="text-center fs-6 fw-bold text-gray-700">MYR {{ $commission->price }}</div>
                             <div class="fw-semibold text-center text-gray-400">{{ __('Price') }}</div>
                         </div>
+                    </div>
+                    <div class="">
+                        <button wire:click="checkout()" class="btn btn-primary">Purchase Now!</button>
                     </div>
                 </div>
             </div>
@@ -140,6 +154,14 @@
                 @endif
             </div>
         </div>
+        <!--begin::Actions-->
+        <div class="card-footer d-flex justify-content-end py-6 px-9">
+            <a href="{{ route('user.commissions', ['username' => auth()->user()->username]) }}"
+                class="btn btn-secondary me-5">Back</a>
+
+            <button wire:click="checkout()" class="btn btn-primary">Purchase Now!</button>
+        </div>
+        <!--end::Actions-->
     </div>
 </div>
 
