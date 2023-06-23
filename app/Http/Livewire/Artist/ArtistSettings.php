@@ -17,8 +17,8 @@ class ArtistSettings extends Component
         return [
             'user.username' => ['required','string',Rule::unique('users', 'username')->ignore($this->user->id)],
             'artist.description' => ['nullable', 'string'],
-            'artist.facebook' => ['nullable', 'string'],
-            'artist.twitter' => ['nullable', 'string']
+            'artist.facebook' => ['nullable', 'url'],
+            'artist.twitter' => ['nullable', 'url']
         ];
     }
 
@@ -29,6 +29,11 @@ class ArtistSettings extends Component
     public function render()
     {
         return view('livewire.artist.artist-settings')->layout(ArtistBaseLayout::class);
+    }
+
+    public function updated()
+    {
+        $this->validate();       
     }
 
     public function submit(){

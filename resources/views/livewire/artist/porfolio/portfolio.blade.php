@@ -87,5 +87,8 @@
                 </table>
             </div>
         </div>
+        <div class="card-footer">
+            {{ $portfolios->links() }}
+        </div>
     </div>
 </div>

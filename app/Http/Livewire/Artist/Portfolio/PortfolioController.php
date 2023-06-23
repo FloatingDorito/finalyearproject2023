@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Livewire\Artist\Portfolio;
+
+use Livewire\WithPagination;
 use App\Models\Artist;
 use App\Models\User;
 use App\View\Components\ArtistBaseLayout;
@@ -9,15 +11,24 @@ use Livewire\Component;
 
 class PortfolioController extends Component
 {
-    public $portfolios;
+    use WithPagination;
+    const PAGINATION_NUMBER = 1;
+    protected $paginationTheme = 'bootstrap';
+    protected $artist, $user;
     public $username;
-    public function mount(){
-        $user = User::where('username', $this->username)->first();
-        $artist = Artist::where('user_id', $user->id)->first();
-        $this->portfolios = Portfolio::where('artist_id', $artist->id)->get();
+
+    public function mount($username)
+    {
+        $this->username = $username;
     }
+
     public function render()
     {
-        return view('livewire.artist.porfolio.portfolio')->layout(ArtistBaseLayout::class);
+        $this->user = User::where('username', $this->username)->first();
+        $this->artist = Artist::where('user_id', $this->user->id)->first();
+        $portfolios = Portfolio::where('artist_id', $this->artist->id)
+            ->paginate(self::PAGINATION_NUMBER);
+
+        return view('livewire.artist.porfolio.portfolio', ['portfolios' => $portfolios])->layout(ArtistBaseLayout::class);
     }
 }

@@ -23,7 +23,7 @@
                         <input type="file" accept="image/*" class="form-control" wire:model="image" />
                     </div>
                     <div>
-                        @if ($image)
+                        @if ($isImage)
                             <label class="fw-bold mt-2">Photo Preview:</label>
                             <br>
                             @if ($image instanceof \Livewire\TemporaryUploadedFile)
