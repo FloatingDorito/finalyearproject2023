@@ -20,7 +20,7 @@
                             View Your Paid Commissions Here
                         </div>
                         <div class="mb-11">
-                            <a href="{{route('user.home',['username' => auth()->user()->username])}}"
+                            <a href="{{route('user.commissions.paid.list',['username' => auth()->user()->username])}}"
                                 class="btn btn-sm btn-primary">{{__('View')}}</a>
                         </div>
                     </div>

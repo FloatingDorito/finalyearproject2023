@@ -22,9 +22,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (count($commissions) < 0)
+                        @if (count($commissions) <= 0)
                             <tr>
-                                <td class="fw-bold fs-6 text-center" colspan="5">
+                                <td class="fw-bold fs-6 text-center" colspan="6">
                                     No Commissions Display
                                 </td>
                             </tr>
@@ -108,6 +108,9 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div class="card-footer">
+            {{ $commissions->links() }}
         </div>
     </div>
 </div>

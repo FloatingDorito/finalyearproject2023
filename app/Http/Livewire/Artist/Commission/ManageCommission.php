@@ -15,10 +15,7 @@ class ManageCommission extends Component
 {
     use WithFileUploads;
 
-    public $coverimage;
-    public $exampleimageone;
-    public $exampleimagetwo;
-    public $exampleimagethree;
+    public $coverimage, $exampleimageone, $exampleimagetwo, $exampleimagethree;
     public $artist;
     public $username;
     public $commission;
@@ -35,7 +32,7 @@ class ManageCommission extends Component
             'commission.status' => ['boolean']
         ];
 
-        if ($this->coverimage instanceof \Livewire\TemporaryUploadedFile) {
+        if ($this->coverimage instanceof \Livewire\TemporaryUploadedFile || $this->coverimage == null) {
             $rules['coverimage'] = ['required', 'image', 'mimes:jpeg,png,svg,jpg,gif', 'max:5120'];
         }
         if ($this->exampleimageone instanceof \Livewire\TemporaryUploadedFile) {
@@ -46,7 +43,7 @@ class ManageCommission extends Component
         }
         if ($this->exampleimagethree instanceof \Livewire\TemporaryUploadedFile) {
             $rules['exampleimagethree'] = ['nullable', 'image', 'mimes:jpeg,png,svg,jpg,gif', 'max:5120'];
-        }       
+        }
 
         return $rules;
 
@@ -58,12 +55,18 @@ class ManageCommission extends Component
         if ($this->commission->status == null) {
             $this->commission->status = false;
         }
+
         $this->coverimage = $this->commission->coverimage;
         $this->exampleimageone = $this->commission->exampleimageone;
         $this->exampleimagetwo = $this->commission->exampleimagetwo;
         $this->exampleimagethree = $this->commission->exampleimagethree;
         $user = User::where('username', $this->username)->first();
         $this->artist = Artist::where('user_id', $user->id)->first();
+    }
+
+    public function updated()
+    {
+        $this->validate();
     }
     public function render()
     {
@@ -90,6 +93,26 @@ class ManageCommission extends Component
             $file_name = null;
         }
         return $file_name;
+    }
+
+    public function clearCoverImgUpload()
+    {
+        $this->coverimage = null;
+    }
+
+    public function clearExpImgOneUpload()
+    {
+        $this->exampleimageone = null;
+    }
+
+    public function clearExpImgTwoUpload()
+    {
+        $this->exampleimagetwo = null;
+    }
+
+    public function clearExpImgThreeUpload()
+    {
+        $this->exampleimagethree = null;
     }
 
     public function submit()

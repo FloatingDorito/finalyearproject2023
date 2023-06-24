@@ -26,14 +26,24 @@
                             </div>
                             <div class="mb-5">
                                 @if ($coverimage)
-                                    <label class="col-form-label fw-bold mt-2">Photo Preview:</label>
+                                    <a class="btn btn-primary" wire:click="clearCoverImgUpload">Clear Upload</a>
                                     <br>
                                     @if ($coverimage instanceof \Livewire\TemporaryUploadedFile)
-                                        <img class="img-fluid mt-2" width="250px"
-                                            src="{{ $coverimage->temporaryUrl() }}">
+                                        @php
+                                            $extension = $coverimage->getClientOriginalExtension();
+                                            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+                                        @endphp
+                                        @if (in_array($extension, $allowedExtensions))
+                                            <label class="col-form-label fw-bold mt-2">Photo Preview:</label>
+                                            <br>
+                                            <img class="img-fluid mt-2" width="250px"
+                                                src="{{ $coverimage->temporaryUrl() }}">
+                                        @endif
                                     @else
+                                        <label class="col-form-label fw-bold mt-2">Photo Preview:</label>
+                                        <br>
                                         <img class="img-fluid mt-2" width="250px"
-                                            src="{{ secure_asset('commission/'. $coverimage) }}">
+                                            src="{{ secure_asset('commission/' . $coverimage) }}">
                                     @endif
                                 @endif
                                 @error('coverimage')
@@ -83,7 +93,7 @@
                                 <span class="input-group-text required">Commission Likes</span>
                                 <textarea class="form-control" placeholder="What artist can draw" wire:model="commission.likes"></textarea>
                             </div>
-                            @error('commission.likess')
+                            @error('commission.likes')
                                 <span class="error text-danger">ERROR: {{ $message }}</span>
                             @enderror
                             <!--end::Input group-->
@@ -118,26 +128,37 @@
                                     Display
                                 </label>
                                 @error('commission.status')
-                                <span class="error text-danger">ERROR: {{ $message }}</span>
-                            @enderror
+                                    <span class="error text-danger">ERROR: {{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-12 mb-5">
                             <!--begin::Input group-->
                             <div class="mb-5">
                                 <label class="fw-bold form-label">Example Image Upload 1</label>
-                                <input type="file" accept="image/*" class="form-control" wire:model="exampleimageone" />
+                                <input type="file" accept="image/*" class="form-control"
+                                    wire:model="exampleimageone" />
                             </div>
                             <div class="mb-5">
                                 @if ($exampleimageone)
-                                    <label class="col-form-label fw-bold mt-2">Photo Preview:</label>
+                                    <a class="btn btn-primary" wire:click="clearExpImgOneUpload">Clear Upload</a>
                                     <br>
                                     @if ($exampleimageone instanceof \Livewire\TemporaryUploadedFile)
-                                        <img class="img-fluid mt-2" width="250px"
-                                            src="{{ $exampleimageone->temporaryUrl() }}">
+                                        @php
+                                            $extension = $exampleimageone->getClientOriginalExtension();
+                                            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+                                        @endphp
+                                        @if (in_array($extension, $allowedExtensions))
+                                            <label class="col-form-label fw-bold mt-2">Photo Preview:</label>
+                                            <br>
+                                            <img class="img-fluid mt-2" width="250px"
+                                                src="{{ $exampleimageone->temporaryUrl() }}">
+                                        @endif
                                     @else
+                                        <label class="col-form-label fw-bold mt-2">Photo Preview:</label>
+                                        <br>
                                         <img class="img-fluid mt-2" width="250px"
-                                            src="{{ secure_asset('commission/'. $exampleimageone) }}">
+                                            src="{{ secure_asset('commission/' . $exampleimageone) }}">
                                     @endif
                                 @endif
                                 @error('exampleimageone')
@@ -145,23 +166,34 @@
                                 @enderror
                             </div>
                             <!--end::Input group-->
-                        </div>                        
+                        </div>
                         <div class="col-12 mb-5">
                             <!--begin::Input group-->
                             <div class="mb-5">
                                 <label class="fw-bold form-label">Example Image Upload 2</label>
-                                <input type="file" accept="image/*" class="form-control" wire:model="exampleimagetwo" />
+                                <input type="file" accept="image/*" class="form-control"
+                                    wire:model="exampleimagetwo" />
                             </div>
                             <div class="mb-5">
                                 @if ($exampleimagetwo)
-                                    <label class="col-form-label fw-bold mt-2">Photo Preview:</label>
+                                    <a class="btn btn-primary" wire:click="clearExpImgTwoUpload">Clear Upload</a>
                                     <br>
                                     @if ($exampleimagetwo instanceof \Livewire\TemporaryUploadedFile)
-                                        <img class="img-fluid mt-2" width="250px"
-                                            src="{{ $exampleimagetwo->temporaryUrl() }}">
+                                        @php
+                                            $extension = $exampleimagetwo->getClientOriginalExtension();
+                                            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+                                        @endphp
+                                        @if (in_array($extension, $allowedExtensions))
+                                            <label class="col-form-label fw-bold mt-2">Photo Preview:</label>
+                                            <br>
+                                            <img class="img-fluid mt-2" width="250px"
+                                                src="{{ $exampleimagetwo->temporaryUrl() }}">
+                                        @endif
                                     @else
+                                        <label class="col-form-label fw-bold mt-2">Photo Preview:</label>
+                                        <br>
                                         <img class="img-fluid mt-2" width="250px"
-                                            src="{{ secure_asset('commission/'. $exampleimagetwo) }}">
+                                            src="{{ secure_asset('commission/' . $exampleimagetwo) }}">
                                     @endif
                                 @endif
                                 @error('exampleimagetwo')
@@ -174,18 +206,29 @@
                             <!--begin::Input group-->
                             <div class="mb-5">
                                 <label class="fw-bold form-label">Example Image Upload 3</label>
-                                <input type="file" accept="image/*" class="form-control" wire:model="exampleimagethree" />
+                                <input type="file" accept="image/*" class="form-control"
+                                    wire:model="exampleimagethree" />
                             </div>
                             <div class="mb-5">
                                 @if ($exampleimagethree)
-                                    <label class="col-form-label fw-bold mt-2">Photo Preview:</label>
+                                    <a class="btn btn-primary" wire:click="clearExpImgThreeUpload">Clear Upload</a>
                                     <br>
                                     @if ($exampleimagethree instanceof \Livewire\TemporaryUploadedFile)
-                                        <img class="img-fluid mt-2" width="250px"
-                                            src="{{ $exampleimagethree->temporaryUrl() }}">
+                                        @php
+                                            $extension = $exampleimagethree->getClientOriginalExtension();
+                                            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+                                        @endphp
+                                        @if (in_array($extension, $allowedExtensions))
+                                            <label class="col-form-label fw-bold mt-2">Photo Preview:</label>
+                                            <br>
+                                            <img class="img-fluid mt-2" width="250px"
+                                                src="{{ $exampleimagethree->temporaryUrl() }}">
+                                        @endif
                                     @else
+                                        <label class="col-form-label fw-bold mt-2">Photo Preview:</label>
+                                        <br>
                                         <img class="img-fluid mt-2" width="250px"
-                                            src="{{ secure_asset('commission/'. $exampleimagethree) }}">
+                                            src="{{ secure_asset('commission/' . $exampleimagethree) }}">
                                     @endif
                                 @endif
                                 @error('exampleimagethree')
@@ -204,7 +247,8 @@
 
                     @if ($commission->exists)
                         <button type="button" class="btn btn-danger me-5" data-bs-toggle="modal"
-                            data-bs-target="#deleteModal" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                            data-bs-target="#deleteModal" data-toggle="modal"
+                            data-target="#deleteModal">Delete</button>
                     @endif
 
                     <button type="submit" class="btn btn-primary">Save
