@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Artist\Portfolio;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use App\View\Components\ArtistBaseLayout;
 use App\Models\Artist;
@@ -18,16 +17,12 @@ class ManagePortfolio extends Component
     public $artist;
     public $username;
     public $portfolio;
-    public $isImage = false;
     public $rules = ['image' => 'required|image|mimes:jpeg,png,svg,jpg,gif'];
 
     public function mount(Portfolio $portfolio)
     {
         $this->portfolio = $portfolio ?? new Portfolio;
         $this->image = $this->portfolio->filelocation;
-        if($this->image){
-            $this->isImage = true;
-        }
         $user = User::where('username', $this->username)->first();
         $this->artist = Artist::where('user_id', $user->id)->first();
     }
@@ -39,12 +34,12 @@ class ManagePortfolio extends Component
 
     public function updated()
     {
-        $this->validate();       
-        $extension = strtolower($this->image->extension());
-        $image_exts = array('png','jpg','jpeg','gif','svg');
-        if(in_array($extension,$image_exts)){
-             $this->isImage = true;
-        }
+        $this->validate();     
+    }
+
+    public function clearImgUpload()
+    {
+        $this->image = null;
     }
 
     public function submit()
@@ -65,14 +60,9 @@ class ManagePortfolio extends Component
         });
         $copyright->save('portfolio/'.$file_name);
 
-        $id = $this->portfolio ? $this->portfolio->id : null;
-        if (empty($id)) {
-            $id = Str::uuid()->toString();
-        }
-
         $this->portfolio = Portfolio::updateOrCreate(
             [
-                'id' => $id,
+                'id' => $this->portfolio ? $this->portfolio->id : null,
                 'artist_id' => $this->artist->id
             ],
             [

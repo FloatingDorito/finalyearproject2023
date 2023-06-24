@@ -23,13 +23,24 @@
                         <input type="file" accept="image/*" class="form-control" wire:model="image" />
                     </div>
                     <div>
-                        @if ($isImage)
-                            <label class="fw-bold mt-2">Photo Preview:</label>
-                            <br>
+                        @if ($image)
+                        <a class="btn btn-primary" wire:click="clearImgUpload">Clear Upload</a>
+                        <br>
                             @if ($image instanceof \Livewire\TemporaryUploadedFile)
-                                <img class="img-fluid mt-2" width="250px" src="{{ $image->temporaryUrl() }}">
+                                @php
+                                    $extension = $image->getClientOriginalExtension();
+                                    $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+                                @endphp
+                                @if (in_array($extension, $allowedExtensions))
+                                    <label class="col-form-label fw-bold mt-2">Photo Preview:</label>
+                                    <br>
+                                    <img class="img-fluid mt-2" width="250px" src="{{ $image->temporaryUrl() }}">
+                                @endif
                             @else
-                                <img class="img-fluid mt-2" width="250px" src="{{secure_asset('portfolio/'.$image)}}">
+                                <label class="fw-bold mt-2">Photo Preview:</label>
+                                <br>
+                                <img class="img-fluid mt-2" width="250px"
+                                    src="{{ secure_asset('portfolio/' . $image) }}">
                             @endif
                         @endif
                         @error('image')

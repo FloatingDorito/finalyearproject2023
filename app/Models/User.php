@@ -15,7 +15,6 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, HasUuids;
 
     public $incrementing = false;
-
     protected $primaryKey = 'id';
     protected $keyType = 'uuid';
 
