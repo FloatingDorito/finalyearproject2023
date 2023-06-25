@@ -1,8 +1,8 @@
 <div>
-    @section('pageTitle', 'Completed Commissions')
+    @section('pageTitle', 'Ongoing Commissions')
     <div class="card shadow-sm">
         <div class="card-header">
-            <h3 class="card-title">{{ auth()->user()->username }}'s Completed Commissions</h3>
+            <h3 class="card-title">{{ auth()->user()->username }}'s Ongoing Commissions</h3>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -10,7 +10,7 @@
                     <thead>
                         <tr class="fw-bold fs-6 text-gray-800 text-center border-bottom border-gray-200">
                             <th>Order ID</th>
-                            <th>User</th>
+                            <th>Artist</th>
                             <th>Title</th>
                             <th>Price</th>
                             <th>Status</th>
@@ -34,7 +34,7 @@
                                     </td>
                                     <td>
                                         <p class="text-center">
-                                            {{ $order->user->username }}
+                                            {{ $order->artist->user->username }}
                                         </p>
                                     </td>
                                     <td>
@@ -49,14 +49,14 @@
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-center">
-                                            @if ($order->status == 'completed')
-                                                <span class="badge badge-danger">Completed</span>
+                                            @if ($order->status == 'approved')
+                                                <span class="badge badge-info">Ongoing</span>
                                             @endif
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-center">
-                                            <a href="{{route('artist.order.view', ['username' => auth()->user()->username, 'order' => $order->id])}}" class="btn btn-sm btn-icon btn-secondary me-3">
+                                            <a href="{{route('user.order.view',['username' => auth()->user()->username, 'order' => $order->id])}}" class="btn btn-sm btn-icon btn-secondary me-3">
                                                 <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2023-06-08-055059/core/html/src/media/icons/duotune/general/gen055.svg-->
                                                 <span class="svg-icon svg-icon-5 m-0"><svg width="24" height="24"
                                                         viewBox="0 0 24 24" fill="none"
@@ -69,6 +69,21 @@
                                                             fill="currentColor" />
                                                         <path
                                                             d="M8.82343 12.0064L8.08852 14.3348C7.8655 15.0414 8.46151 15.7366 9.19388 15.6242L11.8974 15.2092C12.4642 15.1222 12.6916 14.4278 12.2861 14.0223L9.98595 11.7221C9.61452 11.3507 8.98154 11.5055 8.82343 12.0064Z"
+                                                            fill="currentColor" />
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->
+                                            </a>
+                                            <a href="#" class="btn btn-sm btn-icon btn-secondary me-3">
+                                                <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2023-06-08-055059/core/html/src/media/icons/duotune/communication/com007.svg-->
+                                                <span class="svg-icon svg-icon-5 m-0"><svg width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path opacity="0.3"
+                                                            d="M8 8C8 7.4 8.4 7 9 7H16V3C16 2.4 15.6 2 15 2H3C2.4 2 2 2.4 2 3V13C2 13.6 2.4 14 3 14H5V16.1C5 16.8 5.79999 17.1 6.29999 16.6L8 14.9V8Z"
+                                                            fill="currentColor" />
+                                                        <path
+                                                            d="M22 8V18C22 18.6 21.6 19 21 19H19V21.1C19 21.8 18.2 22.1 17.7 21.6L15 18.9H9C8.4 18.9 8 18.5 8 17.9V7.90002C8 7.30002 8.4 6.90002 9 6.90002H21C21.6 7.00002 22 7.4 22 8ZM19 11C19 10.4 18.6 10 18 10H12C11.4 10 11 10.4 11 11C11 11.6 11.4 12 12 12H18C18.6 12 19 11.6 19 11ZM17 15C17 14.4 16.6 14 16 14H12C11.4 14 11 14.4 11 15C11 15.6 11.4 16 12 16H16C16.6 16 17 15.6 17 15Z"
                                                             fill="currentColor" />
                                                     </svg>
                                                 </span>

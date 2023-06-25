@@ -21,7 +21,10 @@ use App\Http\Livewire\User\Commission\CommissionList;
 use App\Http\Livewire\User\Commission\CommissionPurchase;
 use App\Http\Livewire\User\Commission\PaymentUnsuccess;
 use App\Http\Livewire\User\Commission\PaymentSuccess;
-use App\Http\Livewire\User\Chat;
+use App\Http\Livewire\User\Order\OngoingCommission;
+use App\Http\Livewire\User\Order\CompletedCommission;
+use App\Http\Livewire\User\Order\CommissionOrderView;
+use App\Http\Livewire\User\Chat\Main;
 use App\Http\Controllers\CheckoutController;
 /*
 |--------------------------------------------------------------------------
@@ -41,12 +44,15 @@ Route::group(['middleware' => ['auth']], function() {
 
 Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/user/dashboard/{username}', UserDashboard::class)->name('user.home');
-    Route::get('/user/{username}/chat', Chat::class)->name('user.chat');
+    Route::get('/user/{username}/chat/{key?}', Main::class)->name('user.chat');
     Route::get('/user/{username}/artists', ArtistList::class)->name('user.artists');
     Route::get('/user/{username}/commissions', CommissionList::class)->name('user.commissions');
     Route::get('/user/{username}/commissions/view/{commission:id}', CommissionPurchase::class)->name('user.commissions.view');
     Route::get('/user/{username}/commissions/unpaid', PaymentUnsuccess::class)->name('user.commissions.unpaid.list');
     Route::get('/user/{username}/commissions/paid', PaymentSuccess::class)->name('user.commissions.paid.list');
+    Route::get('/user/{username}/commissions/ongoing/list', OngoingCommission::class)->name('user.commissions.ongoing.list');
+    Route::get('/user/{username}/commissions/view/order/{order:id}', CommissionOrderView::class)->name('user.order.view');
+    Route::get('/user/{username}/commissions/complete/list', CompletedCommission::class)->name('user.commissions.complete.list');
     Route::get('/user/{username}/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
     Route::get('/user/{username}/checkout/unsuccess', [CheckoutController::class, 'unsuccess'])->name('checkout.unsuccess');
 });

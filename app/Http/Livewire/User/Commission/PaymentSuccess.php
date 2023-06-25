@@ -6,6 +6,8 @@ use App\View\Components\UserBaseLayout;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Order;
+use App\Models\Conversations;
+use App\Models\Messages;
 
 class PaymentSuccess extends Component
 {
@@ -19,8 +21,10 @@ class PaymentSuccess extends Component
             'user_id' => auth()->user()->id
         ];
         $orders = Order::where($conditions)
-        ->paginate(self::PAGINATION_NUMBER);
+            ->paginate(self::PAGINATION_NUMBER);
 
         return view('livewire.user.commission.payment-success', ['orders' => $orders])->layout(UserBaseLayout::class);
     }
+
+    
 }

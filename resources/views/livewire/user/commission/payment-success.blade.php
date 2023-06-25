@@ -44,7 +44,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-center">
-                                            <a href="#" class="btn btn-sm btn-icon btn-secondary me-3">
+                                            <button class="btn btn-sm btn-icon btn-secondary me-3">
                                                 <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2023-06-08-055059/core/html/src/media/icons/duotune/communication/com007.svg-->
                                                 <span class="svg-icon svg-icon-5 m-0"><svg width="24" height="24"
                                                         viewBox="0 0 24 24" fill="none"
@@ -58,7 +58,7 @@
                                                     </svg>
                                                 </span>
                                                 <!--end::Svg Icon-->
-                                            </a>
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>
