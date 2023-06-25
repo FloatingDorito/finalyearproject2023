@@ -17,6 +17,7 @@ use App\Http\Livewire\Artist\ArtistDashboard;
 use App\Http\Livewire\Artist\ArtistSettings;
 use App\Http\Livewire\User\UserDashboard;
 use App\Http\Livewire\User\Artist\ArtistList;
+use App\Http\Livewire\User\Artist\ViewArtist;
 use App\Http\Livewire\User\Commission\CommissionList;
 use App\Http\Livewire\User\Commission\CommissionPurchase;
 use App\Http\Livewire\User\Commission\PaymentUnsuccess;
@@ -46,6 +47,7 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/user/dashboard/{username}', UserDashboard::class)->name('user.home');
     Route::get('/user/{username}/chat', Main::class)->name('user.chat');
     Route::get('/user/{username}/artists', ArtistList::class)->name('user.artists');
+    Route::get('/user/{username}/artists/view/{artist:id}', ViewArtist::class)->name('user.artists.view');
     Route::get('/user/{username}/commissions', CommissionList::class)->name('user.commissions');
     Route::get('/user/{username}/commissions/view/{commission:id}', CommissionPurchase::class)->name('user.commissions.view');
     Route::get('/user/{username}/commissions/unpaid', PaymentUnsuccess::class)->name('user.commissions.unpaid.list');

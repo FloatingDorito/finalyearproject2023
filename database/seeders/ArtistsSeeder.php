@@ -23,7 +23,17 @@ class ArtistsSeeder extends Seeder
                 'password' => Hash::make('123456'),
                 'email' => $faker->unique()->safeEmail,
                 'type' => 2,
-                'email_verified_at' => now(),
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        }
+
+        for ($i = 0; $i < 10; $i++) {
+            User::create([
+                'username' => $faker->unique()->userName,
+                'password' => Hash::make('123456'),
+                'email' => $faker->unique()->safeEmail,
+                'type' => 0,
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

@@ -18,7 +18,7 @@
                     @elseif ($order->status == 'completed')
                         <span class="badge badge-danger">Completed</span>
                     @endif
-                    <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary my-5"
+                    <a href="{{route('user.artists.view', ['username'=> auth()->user()->username, 'artist' => $order->commission->artist_id])}}" class="d-flex align-items-center text-gray-400 text-hover-primary my-5"
                         target="_blank">
                         <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2023-06-08-055059/core/html/src/media/icons/duotune/communication/com013.svg-->
                         <span class="svg-icon svg-icon-muted svg-icon-2hx"><svg width="24" height="24"

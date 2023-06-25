@@ -7,10 +7,10 @@
                 <div class="card">
                     <!--begin::Card body-->
                     <div class="card-body d-flex flex-center flex-column py-9 px-6">
-                        <a href="#"
+                        <a href="{{route('user.artists.view', ['username'=> auth()->user()->username, 'artist' => $artist->id])}}"
                             class="fs-4 text-gray-800 text-hover-primary fw-bold mb-0">{{ $artist->user->username }}</a>
                         <!--begin::Follow-->
-                        <a href="#" class="btn btn-sm btn-light-primary">
+                        <a href="{{route('user.artists.view', ['username'=> auth()->user()->username, 'artist' => $artist->id])}}" class="btn btn-sm btn-light-primary">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr012.svg-->
                             <span class="svg-icon svg-icon-3">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"

@@ -35,7 +35,6 @@ class CreateUsersSeeder extends Seeder
                 'email' => 'user@itsolutionstuff.com',
                 'type' => 0,
                 'password' => Hash::make('123456'),
-                'email_verified_at' => now(),
                 'created_at' => now(),
                 'updated_at' => now()
             ],
