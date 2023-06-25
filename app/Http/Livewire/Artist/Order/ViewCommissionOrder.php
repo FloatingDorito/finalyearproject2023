@@ -8,6 +8,7 @@ use App\Models\Artist;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\OrderImage;
+use Illuminate\Support\Facades\File;
 
 class ViewCommissionOrder extends Component
 {
@@ -23,8 +24,7 @@ class ViewCommissionOrder extends Component
         ];
         $this->order = Order::where($conditions)
             ->first();
-        $this->orderImages = OrderImage::where('order_id', $this->order->id)
-            ->get();
+        $this->orderImages = OrderImage::where('order_id', $this->order->id)->get();
     }
     public function render()
     {
@@ -37,5 +37,18 @@ class ViewCommissionOrder extends Component
         $order->status = 'completed';
         $order->save();
         $this->dispatchBrowserEvent('orderUpdated');
+    }
+
+    public function delete($imgID)
+    {
+        $image = OrderImage::where('id', $imgID)->first();
+        if ($image) {
+            $filePath = public_path('orderImage/' . $image->filelocation);
+            if (File::exists($filePath)) {
+                File::delete($filePath);
+                $image->delete();
+                $this->dispatchBrowserEvent('imageDelete');
+            }
+        }
     }
 }

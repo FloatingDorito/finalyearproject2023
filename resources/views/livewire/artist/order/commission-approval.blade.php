@@ -71,23 +71,6 @@
                                                 <!--end::Svg Icon-->
                                             </button>
                                             <button class="btn btn-sm btn-icon btn-secondary me-3">
-                                                <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2023-06-08-055059/core/html/src/media/icons/duotune/arrows/arr097.svg-->
-                                                <span class="svg-icon svg-icon-5 m-0"><svg width="32" height="32"
-                                                        viewBox="0 0 32 32" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <rect x="9.39844" y="20.7144" width="16"
-                                                            height="2.66667" rx="1.33333"
-                                                            transform="rotate(-45 9.39844 20.7144)"
-                                                            fill="currentColor" />
-                                                        <rect x="11.2852" y="9.40039" width="16"
-                                                            height="2.66667" rx="1.33333"
-                                                            transform="rotate(45 11.2852 9.40039)"
-                                                            fill="currentColor" />
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </button>
-                                            <button class="btn btn-sm btn-icon btn-secondary me-3">
                                                 <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2023-06-08-055059/core/html/src/media/icons/duotune/communication/com007.svg-->
                                                 <span class="svg-icon svg-icon-5 m-0"><svg width="24" height="24"
                                                         viewBox="0 0 24 24" fill="none"
@@ -161,7 +144,7 @@
 
 @push('scripts')
     <script>
-        window.livewire.on('orderUpdated', () => {
+        window.addEventListener('orderUpdated', () => {
             $('#approveModalLabel').modal('hide');
         });
     </script>

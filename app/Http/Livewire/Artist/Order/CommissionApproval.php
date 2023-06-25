@@ -39,11 +39,4 @@ class CommissionApproval extends Component
         $order->save();
         $this->dispatchBrowserEvent('orderUpdated');
     }
-
-    public function cancel($orderID)
-    {
-        $order = Order::where('id', $orderID)->first();
-        $order->status = 'cancelled';
-        $order->save();
-    }
 }

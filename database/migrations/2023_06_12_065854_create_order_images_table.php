@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignUuid('order_id')->constrained('orders'); 
             $table->string('filename');
             $table->string('filelocation');
-            $table->string('status');
             $table->timestamps();
         });
     }

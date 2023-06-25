@@ -5,6 +5,7 @@
 /public/storage
 /public/portfolio
 /public/commission
+/public/orderImage
 /storage/*.key
 /vendor
 .env

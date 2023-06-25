@@ -12,6 +12,7 @@ use App\Http\Livewire\Artist\Order\CommissionApproval;
 use App\Http\Livewire\Artist\Order\CommissionOngoing;
 use App\Http\Livewire\Artist\Order\CommissionCompleted;
 use App\Http\Livewire\Artist\Order\ViewCommissionOrder;
+use App\Http\Livewire\Artist\Order\UploadCommissionImage;
 use App\Http\Livewire\Artist\ArtistDashboard;
 use App\Http\Livewire\Artist\ArtistSettings;
 use App\Http\Livewire\User\UserDashboard;
@@ -58,6 +59,7 @@ Route::middleware(['auth', 'user-access:artist'])->group(function () {
     Route::get('/artist/{username}/orders/ongoing/list', CommissionOngoing::class)->name('artist.order.ongoing');
     Route::get('/artist/{username}/orders/completed/list', CommissionCompleted::class)->name('artist.order.completed');
     Route::get('/artist/{username}/orders/view/{order:id}', ViewCommissionOrder::class)->name('artist.order.view');
+    Route::get('/artist/{username}/orders/upload-image/{order:id}', UploadCommissionImage::class)->name('artist.order.upload');
     Route::get('/artist/{username}/commission/list', CommissionController::class)->name('artist.commission');
     Route::get('/artist/{username}/commission/view/{commission:id}', ViewCommission::class)->name('artist.commission.view');
     Route::get('/artist/{username}/commission/create', ManageCommission::class)->name('artist.create.commission');
