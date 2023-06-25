@@ -48,7 +48,7 @@ class CommissionPurchase extends Component
         $data = [
             'artist_id' => $this->commission->artist->id,
             'user_id' => auth()->user()->id,
-            'commissions_id' => $this->commission->id,
+            'commission_id' => $this->commission->id,
             'session_id' => $checkout_session->id,
             'status' => 'unpaid'
         ];

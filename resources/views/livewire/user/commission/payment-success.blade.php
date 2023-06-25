@@ -18,8 +18,8 @@
                     <tbody>
                         @if (count($orders) <= 0)
                             <tr>
-                                <td class="fw-bold fs-6 text-center" colspan="3">
-                                    No Unsuccessful Commission Payments
+                                <td class="fw-bold fs-6 text-center" colspan="4">
+                                    No Successful Commission Payments
                                 </td>
                             </tr>
                         @else

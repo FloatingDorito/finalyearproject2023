@@ -15,7 +15,6 @@ class PaymentUnsuccess extends Component
     protected $paginationTheme = 'bootstrap';
     public function render()
     {
-
         $conditions = [
             'status' => 'unpaid',
             'user_id' => auth()->user()->id

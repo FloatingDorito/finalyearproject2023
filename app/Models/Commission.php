@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class Commission extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
+    public $incrementing = false;
+    protected $primaryKey = 'id';
     protected $fillable = [
         'artist_id',
         'coverimage',

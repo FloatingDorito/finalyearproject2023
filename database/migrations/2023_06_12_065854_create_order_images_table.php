@@ -12,9 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('order_images', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('order_id');
-            $table->foreign('order_id')->references('id')->on('orders');
+            $table->uuid('id')->primary();
+            $table->foreignUuid('order_id')->constrained('orders'); 
             $table->string('filename');
             $table->string('filelocation');
             $table->string('status');

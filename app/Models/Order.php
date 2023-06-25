@@ -4,15 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
+    public $incrementing = false;
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'artist_id',
         'user_id',
-        'commissions_id',
+        'commission_id',
         'session_id',
         'status'
     ];
@@ -28,6 +31,6 @@ class Order extends Model
     }
 
     public function commission(){
-        return $this->belongsTo(Commission::class, 'commissions_id');
+        return $this->belongsTo(Commission::class, 'commission_id');
     }
 }
