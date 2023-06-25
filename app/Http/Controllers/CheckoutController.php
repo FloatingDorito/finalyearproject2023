@@ -15,7 +15,7 @@ class CheckoutController extends Controller
         $order = Order::where('session_id', $sessionId)->first();
         $order->status = 'paid';
         $order->save();
-        $this->checkConversation($order->user_id);
+        $this->checkConversation($order->artist->user->id);
         return view('user.layouts.checkout-success');
     }
 
@@ -29,7 +29,7 @@ class CheckoutController extends Controller
             'receiver_id' => $receiverID,
             'sender_id' => auth()->user()->id
         ];
-        $checkConvo = Conversations::where($conditionOne)->orWhere($conditionTwo)->get();
+        $checkConvo = Conversations::where($conditionOne)->where($conditionTwo)->get();
 
         if (count($checkConvo) == 0) {
             $createConvo = Conversations::create([
