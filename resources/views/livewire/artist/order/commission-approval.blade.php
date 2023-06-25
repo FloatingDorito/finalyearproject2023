@@ -49,7 +49,9 @@
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-center">
-                                            <span class="badge badge-success">Paid</span>
+                                            @if ($order->status == 'paid')
+                                                <span class="badge badge-success">Paid</span>
+                                            @endif
                                         </div>
                                     </td>
                                     <td>
@@ -156,3 +158,11 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        window.livewire.on('orderUpdated', () => {
+            $('#approveModalLabel').modal('hide');
+        });
+    </script>
+@endpush

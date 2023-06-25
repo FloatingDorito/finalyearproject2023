@@ -118,7 +118,8 @@
                 {{-- Ongoing Orders --}}
                 <div class="menu-sub menu-sub-accordion">
                     <div class="menu-item">
-                        <a class="menu-link" href="#">
+                        <a class="menu-link @if (Route::is('artist.order.approve')) active @endif"
+                            href="{{ route('artist.order.approve', ['username' => auth()->user()->username]) }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
@@ -129,7 +130,8 @@
                 {{-- Ongoing Commission --}}
                 <div class="menu-sub menu-sub-accordion">
                     <div class="menu-item">
-                        <a class="menu-link" href="#">
+                        <a class="menu-link @if (Route::is('artist.order.ongoing')) active @endif"
+                        href="{{ route('artist.order.ongoing', ['username' => auth()->user()->username]) }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
@@ -140,7 +142,8 @@
                 {{-- Completed Commission --}}
                 <div class="menu-sub menu-sub-accordion">
                     <div class="menu-item">
-                        <a class="menu-link" href="#">
+                        <a class="menu-link @if (Route::is('artist.order.completed')) active @endif"
+                        href="{{ route('artist.order.completed', ['username' => auth()->user()->username]) }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>

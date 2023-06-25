@@ -12,7 +12,7 @@ use App\Models\Order;
 class CommissionApproval extends Component
 {
     use WithPagination;
-    const PAGINATION_NUMBER = 1;
+    const PAGINATION_NUMBER = 10;
     protected $paginationTheme = 'bootstrap';
     protected $artist, $user;
     public $username;
@@ -37,6 +37,7 @@ class CommissionApproval extends Component
         $order = Order::where('id', $orderID)->first();
         $order->status = 'approved';
         $order->save();
+        $this->dispatchBrowserEvent('orderUpdated');
     }
 
     public function cancel($orderID)
