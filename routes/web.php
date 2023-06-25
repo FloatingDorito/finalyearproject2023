@@ -44,7 +44,7 @@ Route::group(['middleware' => ['auth']], function() {
 
 Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/user/dashboard/{username}', UserDashboard::class)->name('user.home');
-    Route::get('/user/{username}/chat/{key?}', Main::class)->name('user.chat');
+    Route::get('/user/{username}/chat', Main::class)->name('user.chat');
     Route::get('/user/{username}/artists', ArtistList::class)->name('user.artists');
     Route::get('/user/{username}/commissions', CommissionList::class)->name('user.commissions');
     Route::get('/user/{username}/commissions/view/{commission:id}', CommissionPurchase::class)->name('user.commissions.view');

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignUuid('sender_id')->references('id')->on('users');
             $table->foreignUuid('receiver_id')->references('id')->on('users');
             $table->text('texts')->nullable();
-            $table->string('type')->nullable();
             $table->timestamps();
         });
     }
