@@ -16,7 +16,7 @@ class CreateUsersSeeder extends Seeder
         $users = [
             [
                 'username' => 'Admin',
-                'email' => 'admin@itsolutionstuff.com',
+                'email' => 'admin@example.com',
                 'type' => 1,
                 'password' => Hash::make('123456'),
                 'created_at' => now(),
@@ -24,7 +24,7 @@ class CreateUsersSeeder extends Seeder
             ],
             [
                 'username' => 'Artist',
-                'email' => 'artist@itsolutionstuff.com',
+                'email' => 'artist@example.com',
                 'type' => 2,
                 'password' => Hash::make('123456'),
                 'created_at' => now(),
@@ -32,7 +32,7 @@ class CreateUsersSeeder extends Seeder
             ],
             [
                 'username' => 'User',
-                'email' => 'user@itsolutionstuff.com',
+                'email' => 'user@example.com',
                 'type' => 0,
                 'password' => Hash::make('123456'),
                 'created_at' => now(),
